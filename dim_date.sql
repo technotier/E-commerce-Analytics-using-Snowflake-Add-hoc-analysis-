@@ -33,7 +33,7 @@ final_cte AS (
             WHEN DAYOFWEEK(full_date) = 4 THEN 'Thursday'
             WHEN DAYOFWEEK(full_date) = 5 THEN 'Friday'
             WHEN DAYOFWEEK(full_date) = 6 THEN 'Saturday'
-            WHEN DAYOFWEEK(full_date) = 7 THEN 'Sunday'
+            WHEN DAYOFWEEK(full_date) = 0 THEN 'Sunday'
         END as week_name,
         CASE 
             WHEN MONTH(full_date) IN (12, 1, 2) THEN 'Winter'
@@ -42,7 +42,7 @@ final_cte AS (
             ELSE 'Fall'
         END as season,
         CASE 
-            WHEN DAYOFWEEK(full_date) IN (6, 7) THEN 'Weekend'
+            WHEN DAYOFWEEK(full_date) IN (0, 6) THEN 'Weekend'
             ELSE 'Weekday'
         END as day_category,
         CASE 
